@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./popup.scss";
-import { fetchRecipe, updateRecipe, createRecipe } from "../gateway";
+import { fetchRecipe} from "../gateway";
 
 class PopUp extends Component {
   state = {
@@ -20,21 +20,6 @@ class PopUp extends Component {
       })
     );
   }
-
-  // componentDidUpdate(prevProps) {
-  //   console.log(prevProps.selectRecipe + " " + this.props.selectRecipe);
-  //   if (prevProps.selectRecipe !== this.props.selectRecipe) {
-  //     fetchRecipe(this.props.selectRecipe).then(recipeProp =>
-  //       this.setState({
-  //         id: recipeProp.id,
-  //         date: recipeProp.date,
-  //         name: recipeProp.name,
-  //         recipe: recipeProp.recipe[0],
-  //         recipes: recipeProp.recipe
-  //       })
-  //     );
-  //   }
-  // }
 
   handleChange = event => {
     const { name, value } = event.target;

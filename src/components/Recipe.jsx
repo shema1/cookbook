@@ -48,14 +48,22 @@ class Recipe extends Component {
             </button>
           </div>
         </div>
-        <div className={`recipe-body ${this.state.openInfo ? "item-open" : "hide"}`}>
+        <div
+          className={`recipe-body ${
+            this.state.openInfo ? "item-open" : "hide"
+          }`}
+        >
           <ul className="recipe-history">
             {recipe.recipe
               .sort((a, b) => b.date - a.date)
               .map(history => (
                 <li className="recipe-history__item" key={Math.random()}>
-                  <p className="recipe-history__date">{moment(history.date).format("MMM D YYYY, hh:mm:ss")}</p>
-                  <span className="recipe-history__description">{history.descripton}</span>
+                  <p className="recipe-history__date">
+                    {moment(history.date).format("MMM D YYYY, hh:mm:ss")}
+                  </p>
+                  <span className="recipe-history__description">
+                    {history.descripton}
+                  </span>
                 </li>
               ))}
           </ul>
