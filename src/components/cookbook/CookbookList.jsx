@@ -1,13 +1,13 @@
 import React, { Component, PureComponent } from "react";
 import Recipe from "./Recipe";
 import "./cookbookList.scss";
-import PopUp from "./Popup";
+import PopUp from "../popup/Popup";
 import {
   createRecipe,
   fetchRecipeList,
   deleteRecipe,
   updateRecipe
-} from "../gateway";
+} from "../../gateway";
 
 class CookbookList extends Component {
   state = {

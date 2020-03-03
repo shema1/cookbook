@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Cookbook from "./components/Cookbook";
+import Cookbook from "./components/cookbook/Cookbook"
 
 
 class App extends Component {

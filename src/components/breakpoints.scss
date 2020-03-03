@@ -1,0 +1,27 @@
+$xl:1140px;
+$lg:960px;
+$md:720px;
+$sm:540px;
+
+@mixin extra-large {
+  @media screen and (max-width: $xl) {
+      @content
+  }
+}
+
+@mixin large {
+  @media screen and (max-width: $lg) {
+      @content
+  }
+}
+@mixin medium {
+  @media screen and (max-width: $md) {
+      @content
+  }
+}
+
+@mixin small {
+  @media screen and (max-width: $sm) {
+      @content
+  }
+}

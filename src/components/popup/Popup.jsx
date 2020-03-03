@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./popup.scss";
-import { fetchRecipe} from "../gateway";
+import { fetchRecipe} from "../../gateway";
 
 class PopUp extends Component {
   state = {
