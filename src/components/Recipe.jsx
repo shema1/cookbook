@@ -48,7 +48,7 @@ class Recipe extends Component {
             </button>
           </div>
         </div>
-        <div className={`recipe-body ${this.state.openInfo ? "" : "hide"}`}>
+        <div className={`recipe-body ${this.state.openInfo ? "item-open" : "hide"}`}>
           <ul className="recipe-history">
             {recipe.recipe
               .sort((a, b) => b.date - a.date)

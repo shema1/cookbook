@@ -58,14 +58,22 @@ class PopUp extends Component {
   };
 
   handleUpdateRecipe = () => {
-    const newRecipe = {
-      name: this.state.name,
-      date: moment(),
-      recipe: [
-        { descripton: this.state.recipe, date: moment() },
-        ...this.state.recipes
-      ]
-    };
+    let newRecipe;
+    if (this.state.recipe === this.state.recipes[0].descripton) {
+      newRecipe = {
+        name: this.state.name,
+        date: moment()
+      };
+    } else {
+      newRecipe = {
+        name: this.state.name,
+        date: moment(),
+        recipe: [
+          { descripton: this.state.recipe, date: moment() },
+          ...this.state.recipes
+        ]
+      };
+    }
     this.props.onUpdateRecipe(this.state.id, newRecipe);
   };
 
@@ -105,6 +113,7 @@ class PopUp extends Component {
             name="name"
             onChange={() => this.handleChange(event)}
             className="input-name popup-input"
+            required
           />
           <label htmlFor="recipe" className="input-label">
             Recipe
@@ -117,6 +126,7 @@ class PopUp extends Component {
             cols="30"
             rows="10"
             className="input-text popup-input"
+            required
           ></textarea>
           {selectRecipe == "" ? createBtn : updateBtn}
         </form>
