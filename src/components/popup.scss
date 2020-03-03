@@ -1,0 +1,50 @@
+.popup{
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #00000091;
+}
+
+.popup-form{
+    position: fixed;
+    left: 37%;
+    top: 10%;
+    width: 500px;
+    height: 600px;
+    background-color: #45B29D;
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+}
+
+.btn-popup{
+    width: 150px;
+    margin: 20px auto;
+}
+
+.input-label{
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.popup-input{
+    outline: none;
+    border-radius: 5px; 
+    border-width: 2px;
+    &:focus{
+        border-color: #2980ab;
+    }
+}
+.input-name{
+    height: 40px;
+}
+.input-text{
+    height: 100%;
+}
+
+.close{
+    margin-left: auto;
+}
