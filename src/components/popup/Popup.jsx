@@ -66,7 +66,7 @@ class PopUp extends Component {
 	}
 
 	render() {
-		const { onClosePopup,selectRecipe } = this.props
+		const { onClosePopup, selectRecipe } = this.props
 		return (
 			<div className='popup'>
 				<form action='popup-form' className='popup-form'>
@@ -102,7 +102,7 @@ class PopUp extends Component {
 						type='submit'
 						onClick={() => this.handleCreateRecipe()}
 					>
-						{selectRecipe !== '' ?"Update recipe":"Create recipe"}
+						{selectRecipe !== '' ? 'Update recipe' : 'Create recipe'}
 					</button>
 				</form>
 			</div>
