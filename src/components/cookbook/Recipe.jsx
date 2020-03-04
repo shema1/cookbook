@@ -14,6 +14,7 @@ class Recipe extends Component {
 
   render() {
     const { recipe, onDeleteRecipe, onOpenPopup } = this.props;
+    const sortedList = recipe.recipe.sort((a, b) => b.date - a.date);
     return (
       <li
         className={`cookbook-list__recipe ${
@@ -54,18 +55,16 @@ class Recipe extends Component {
           }`}
         >
           <ul className="recipe-history">
-            {recipe.recipe
-              .sort((a, b) => b.date - a.date)
-              .map(history => (
-                <li className="recipe-history__item" key={Math.random()}>
-                  <p className="recipe-history__date">
-                    {moment(history.date).format("MMM D YYYY, hh:mm:ss")}
-                  </p>
-                  <span className="recipe-history__description">
-                    {history.descripton}
-                  </span>
-                </li>
-              ))}
+            {sortedList.map(history => (
+              <li className="recipe-history__item" key={Math.random()}>
+                <p className="recipe-history__date">
+                  {moment(history.date).format("MMM D YYYY, hh:mm:ss")}
+                </p>
+                <span className="recipe-history__description">
+                  {history.descripton}
+                </span>
+              </li>
+            ))}
           </ul>
         </div>
       </li>

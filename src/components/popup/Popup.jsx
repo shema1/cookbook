@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import moment from "moment";
 import "./popup.scss";
-import { fetchRecipe} from "../../gateway";
+import { fetchRecipe } from "../../gateway";
 
 class PopUp extends Component {
   state = {
@@ -29,19 +29,22 @@ class PopUp extends Component {
   };
 
   handleCreateRecipe = () => {
-    const newRecipe = {
-      name: this.state.name,
-      date: moment(),
-      recipe: [
-        {
-          descripton: this.state.recipe,
-          date: moment()
-        }
-      ]
-    };
-    this.props.onCreateRecipe(newRecipe);
+    if (this.props.selectRecipe !== "") {
+      this.handleUpdateRecipe();
+    } else {
+      const newRecipe = {
+        name: this.state.name,
+        date: moment(),
+        recipe: [
+          {
+            descripton: this.state.recipe,
+            date: moment()
+          }
+        ]
+      };
+      this.props.onCreateRecipe(newRecipe);
+    }
   };
-
   handleUpdateRecipe = () => {
     let newRecipe;
     if (this.state.recipe === this.state.recipes[0].descripton) {
@@ -63,30 +66,11 @@ class PopUp extends Component {
   };
 
   render() {
-    const { onClosePopup, selectRecipe } = this.props;
-    const createBtn = (
-      <button
-        className="add-recipe btn-popup"
-        type="submit"
-        onClick={() => this.handleCreateRecipe()}
-      >
-        Create recipe
-      </button>
-    );
-
-    const updateBtn = (
-      <button
-        className="add-recipe btn-popup"
-        type="submit"
-        onClick={() => this.handleUpdateRecipe()}
-      >
-        Update recipe
-      </button>
-    );
+    const { onClosePopup } = this.props;
     return (
       <div className="popup">
         <form action="popup-form" className="popup-form">
-          <button className="close btn" onClick={() => onClosePopup(event)}>
+          <button className="close btn" onClick={event => onClosePopup(event)}>
             <i className="fas fa-times"></i>
           </button>
           <label htmlFor="name" className="input-label">
@@ -106,14 +90,20 @@ class PopUp extends Component {
           <textarea
             name="recipe"
             value={this.state.recipe}
-            onChange={() => this.handleChange(event)}
+            onChange={event => this.handleChange(event)}
             id=""
             cols="30"
             rows="10"
             className="input-text popup-input"
             required
           ></textarea>
-          {selectRecipe == "" ? createBtn : updateBtn}
+          <button
+            className="add-recipe btn-popup"
+            type="submit"
+            onClick={() => this.handleCreateRecipe()}
+          >
+            Create recipe
+          </button>
         </form>
       </div>
     );

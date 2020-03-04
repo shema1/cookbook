@@ -8,6 +8,7 @@ import {
   deleteRecipe,
   updateRecipe
 } from "../../gateway";
+import moment from "moment";
 
 class CookbookList extends Component {
   state = {
@@ -61,22 +62,23 @@ class CookbookList extends Component {
   };
 
   render() {
+    const sortedList = this.state.recipes
+      .slice()
+      .sort((a, b) => moment(b.date) - moment(a.date));
     return (
       <>
         <button className="add-recipe" onClick={this.onOpenPopup}>
           <i className="fas fa-plus"></i>add new recipe
         </button>
         <ul className="cookbook-list">
-          {this.state.recipes
-            .sort((a, b) => b.date - a.date)
-            .map(recipe => (
-              <Recipe
-                key={recipe.id}
-                recipe={recipe}
-                onOpenPopup={this.onOpenPopup}
-                onDeleteRecipe={this.onDeleteRecipe}
-              />
-            ))}
+          {sortedList.map(recipe => (
+            <Recipe
+              key={recipe.id}
+              recipe={recipe}
+              onOpenPopup={this.onOpenPopup}
+              onDeleteRecipe={this.onDeleteRecipe}
+            />
+          ))}
         </ul>
         {this.state.popupIsOpen && (
           <PopUp
